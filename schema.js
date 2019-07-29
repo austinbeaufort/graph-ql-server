@@ -44,11 +44,19 @@ const schema = buildSchema(`
         body: String
     }
 
+    type LatestCommentAndPost {
+        name: String
+        commentTitle: String
+        commentBody: String
+        postTitle: String
+        postBody: String
+    }
+
     type Query {
         getPosts: [Post]
         getComments: [Comment]
         getUsers: [User]
-        getUserCommentsById(id: Int!): String
+        getUserPostsAndComments(id: Int!): LatestCommentAndPost
     }
 `)
 

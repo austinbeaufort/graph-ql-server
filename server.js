@@ -23,11 +23,31 @@ const root = {
         return users;
     },
 
-    getUserCommentsById: function() {
-        let us
+    getUserPostsAndComments: function(id) {
+        let { id: index } = id;
+        let person = users.find(user => index == user.id);
+        let userComments = comments.find(comment => index == comment.id);
+        let userPost = posts.find(post => index == post.id);
+        return {
+            name: person.name,
+            commentTitle: userComments.name,
+            commentBody: userComments.body,
+            postTitle: userPost.title,
+            postBody: userPost.body
+        }
+
+        // return [`${id}`];
+        // console.log('id : ', id);
+        // console.log('person : ', person);
+        // return person;
     }
 }
 
+// function getUser(id) {
+//     let person = users.find(user => id == user.id);
+//     return person.name;
+// }
+// console.log(getUser(2));
 
 
 // SERVER
