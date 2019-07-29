@@ -1,6 +1,5 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
-const axios = require('axios');
 
 // DUMMY DATA
 const { posts, comments, users } = require('./data');
@@ -33,21 +32,23 @@ const root = {
             commentTitle: userComments.name,
             commentBody: userComments.body,
             postTitle: userPost.title,
-            postBody: userPost.body
+            postBody: userPost.body,
+        }
+    },
+
+    // CREATE NEW USER
+    setUser: function(input) {
+        let newUser = {
+            id: input.input.id,
+            name: input.input.name,
+            username: input.input.username,
+            email: input.input.email,
         }
 
-        // return [`${id}`];
-        // console.log('id : ', id);
-        // console.log('person : ', person);
-        // return person;
-    }
+        users.push(newUser);
+        return users;
+    },
 }
-
-// function getUser(id) {
-//     let person = users.find(user => id == user.id);
-//     return person.name;
-// }
-// console.log(getUser(2));
 
 
 // SERVER

@@ -52,11 +52,31 @@ const schema = buildSchema(`
         postBody: String
     }
 
+    input UserInput {
+        id: Int
+        name: String
+        username: String
+        email: String
+    }
+
+    type NewUser {
+        id: Int
+        name: String
+        username: String
+        email: String
+    }
+
+
     type Query {
         getPosts: [Post]
         getComments: [Comment]
         getUsers: [User]
         getUserPostsAndComments(id: Int!): LatestCommentAndPost
+    }
+
+
+    type Mutation {
+        setUser(input: UserInput): [User]
     }
 `)
 
